@@ -96,12 +96,13 @@ public class Simulation{
         timer.schedule(new Loop(frame), 0, 1000);
 
         JTextField requestTime = new JTextField();
-        requestTime.setBounds(380, 10, 120, 20);
+        requestTime.setBounds(350, 10, 140, 20);
+        requestTime.setToolTipText("Request Time");
         requestTime.setText("5");
         frame.add(requestTime);
 
         JButton newRequest = new JButton("New Request");
-        newRequest.setBounds(500, 10, 120, 20);
+        newRequest.setBounds(520, 10, 140, 20);
         newRequest.addActionListener(e -> {
             Info info = new Info();
             info.delay = Integer.parseInt(requestTime.getText());
@@ -111,7 +112,7 @@ public class Simulation{
         frame.add(newRequest);
 
         JButton randomRequest = new JButton("Random Request");
-        randomRequest.setBounds(380, 35, 120, 20);
+        randomRequest.setBounds(350, 35, 140, 20);
         randomRequest.addActionListener(e -> {
             Info info = new Info();
             info.delay = random.nextInt(5) + 3;
@@ -121,7 +122,7 @@ public class Simulation{
         frame.add(randomRequest);
 
         JButton toggleRequests = new JButton("Toggle Requests");
-        toggleRequests.setBounds(500, 35, 120, 20);
+        toggleRequests.setBounds(520, 35, 140, 20);
         toggleRequests.addActionListener(e -> toggle());
         frame.add(toggleRequests);
 
