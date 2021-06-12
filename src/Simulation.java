@@ -34,6 +34,11 @@ public class Simulation{
         else return -1;
     }
 
+    static boolean toggle = false;
+    public static void toggle(){
+        toggle = !toggle;
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Load Balancing Simulation") {
             @Override
@@ -92,6 +97,7 @@ public class Simulation{
 
         JTextField requestTime = new JTextField();
         requestTime.setBounds(380, 10, 120, 20);
+        requestTime.setText("5");
         frame.add(requestTime);
 
         JButton newRequest = new JButton("New Request");
@@ -116,9 +122,7 @@ public class Simulation{
 
         JButton toggleRequests = new JButton("Toggle Requests");
         toggleRequests.setBounds(500, 35, 120, 20);
-        toggleRequests.addActionListener(e -> {
-
-        });
+        toggleRequests.addActionListener(e -> toggle());
         frame.add(toggleRequests);
 
         frame.setSize(1000, 800);
@@ -135,6 +139,16 @@ class Loop extends TimerTask {
     }
 
     public void run() {
+        if (Simulation.toggle){
+            Info info = new Info();
+            info.delay = Simulation.random.nextInt(5) + 3;
+            Simulation.mainQueue.enqueue(info);
+            if (Simulation.random.nextInt(10) > 5){
+                info = new Info();
+                info.delay = Simulation.random.nextInt(5) + 3;
+                Simulation.mainQueue.enqueue(info);
+            }
+        }
         Info info = Simulation.mainQueue.dequeue();
         if (info != null) {
             int n = Simulation.min();
