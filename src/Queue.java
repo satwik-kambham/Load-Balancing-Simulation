@@ -51,7 +51,6 @@ public class Queue implements Iterable<Info> {
         first = first.next;
         n--;
         if (isEmpty()) last = null;   // to avoid loitering
-        processTime -= item.delay * slowness;
         return item;
     }
 

@@ -161,6 +161,7 @@ class Loop extends TimerTask {
         if (info != null) {
             info.color = new Color(0, 255 / (int)info.delay, 0);
             info.delay -= 1;
+            Simulation.normalQueue.processTime -= 2;
             if (info.delay == 0) {
                 Simulation.normalQueue.dequeue();
             }
@@ -169,6 +170,7 @@ class Loop extends TimerTask {
         if (info != null) {
             info.color = new Color(0, 255 / (int)Math.ceil(info.delay), 0);
             info.delay -= 0.5;
+            Simulation.slowQueue.processTime -= 2;
             if (info.delay <= 0) {
                 Simulation.slowQueue.dequeue();
             }
@@ -177,8 +179,12 @@ class Loop extends TimerTask {
         if (info != null) {
             info.color = new Color(0, 255 / (int)info.delay, 0);
             info.delay -= 2;
+            Simulation.fastQueue.processTime -= 2;
             if (info.delay <= 0) {
                 Simulation.fastQueue.dequeue();
+                if (info.delay != 0){
+                    Simulation.fastQueue.processTime++;
+                }
             }
         }
         frame.repaint();
