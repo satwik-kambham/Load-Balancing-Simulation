@@ -8,6 +8,4 @@ The various colored boxes represent the requests that are being assigned to the 
 
 ![Image](https://1.bp.blogspot.com/-J3Y7A4dHy1w/YMRCFOL7c_I/AAAAAAAAAB8/WxbsxDBHDKgpTZhEjWzpX-klZ8RlPREtQCLcBGAsYHQ/w463-h372/sample.gif)
 
-For more information refer to the related blog post: https://satwikkambham.blogspot.com/2021/06/load-balancing-simulation.html
-
 Built in java using swing and awt.
